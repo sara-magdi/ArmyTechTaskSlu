@@ -1,0 +1,60 @@
+﻿@model IEnumerable<CardProductDTO>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+             <p>
+        <a asp-action="Create" class=" btn btn-primary btn-sm">CreateNew</a>
+            </p>
+            <div class="card my-4">
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                    <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                        <h6 class="text-grey text-capitalize ps-3">CardProduct</h6>
+                    </div>
+                </div>
+                <div class="card-body px-0 pb-2">
+                    <div class="table-responsive p-0">
+                        <table class="table align-items-center justify-content-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">@Html.DisplayNameFor(m => m.ItemName)</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">@Html.DisplayNameFor(m => m.Price)</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">@Html.DisplayNameFor(m => m.Quantity)</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="continent-delete-@item.Id">
+                                        <td class="p-3">
+                                            <div class="text-sm font-weight-bold mb-0 p-2">@item.ItemName</div>
+                                        </td>
+                                          <td class="p-3">
+                                            <div class="text-sm font-weight-bold mb-0 p-2">@item.Price</div>
+                                        </td>
+                                          <td class="p-3">
+                                            <div class="text-sm font-weight-bold mb-0 p-2">@item.Quantity</div>
+                                        </td>
+                                        <td>
+                                            <a class="btn-grid btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@item.Id ">Edit</a>
+                                        </td>
+                                        <td >
+                                            <a class="btn-grid btn btn-danger btn-sm" href="/CardProducts/Delete/@item.Id" data-id="@item.Id" onclick="showConfirm(event, '/CardProducts/Delete/@item.Id', @item.Id);">Delete</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

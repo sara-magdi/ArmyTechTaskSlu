@@ -11,7 +11,6 @@ namespace Army.Core.Infrastructure.Models.Entites
 {
     public class CardProduct :BaseEntity
     {
-        public int CardProductId { get; set; }
         [Column(TypeName = "decimal(8, 2)")]
         public decimal Price { get; set; }
         public int Quantity { get; set; }
